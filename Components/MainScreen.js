@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import {SafeAreaView, Text, StyleSheet, Platform} from "react-native";
-import {createBottomTabNavigator, createAppContainer,} from 'react-navigation'
+import {createBottomTabNavigator, createAppContainer} from 'react-navigation'
 import {Icon} from "native-base";
+
 
 import HomeTab from './AppTabNavigator/HomeTab';
 import AddMediaTab from './AppTabNavigator/AddMediaTab';

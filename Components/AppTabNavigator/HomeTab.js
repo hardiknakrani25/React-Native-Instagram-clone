@@ -1,7 +1,9 @@
 import React, {Component} from 'react';
 import {View, StyleSheet, Text} from 'react-native';
 
-import {Icon} from 'native-base'
+import {Icon, Container, Content} from 'native-base'
+
+import CardComponent from '../CardComponent';
 
 export default class HomeTab extends Component {
 
@@ -15,9 +17,11 @@ export default class HomeTab extends Component {
 
     render() {
         return (
-            <View style={styles.container}>
-                <Text>HomeTab </Text>
-            </View>
+            <Container style={styles.container}>
+                <Content>
+                    <CardComponent/>
+                </Content>
+            </Container>
         )
     }
 }
@@ -25,7 +29,6 @@ export default class HomeTab extends Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center'
+        backgroundColor: 'white'
     }
 })
