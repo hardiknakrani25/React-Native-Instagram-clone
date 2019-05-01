@@ -2,6 +2,15 @@ import React, { Component } from "react";
 import { SafeAreaView, Text, StyleSheet } from "react-native";
 import {createBottomTabNavigator, createAppContainer} from 'react-navigation'
 import {Icon} from "native-base";
+
+import HomeTab from './AppTabNavigator/HomeTab';
+import AddMediaTab from './AppTabNavigator/AddMediaTab';
+import SearchTab from './AppTabNavigator/SearchTab';
+import LikesTab from './AppTabNavigator/LikesTab';
+import ProfileTab from './AppTabNavigator/ProfileTab';
+
+
+
 class MainScreen extends Component {
     static navigationOptions = {
         headerLeft: <Icon name="camera" style={{paddingLeft: 10}}/>,
@@ -11,9 +20,9 @@ class MainScreen extends Component {
 
   render() {
     return (
-      <SafeAreaView style={styles.container}>
-        <Text>MainScreen</Text>
-      </SafeAreaView>
+
+        <AppTabNavigator/>
+
     );
   }
 }
