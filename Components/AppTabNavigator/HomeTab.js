@@ -27,8 +27,12 @@ export default class HomeTab extends Component {
                             alignItems: 'center',
                             paddingHorizontal: 7
                         }}>
-                            <Text>Stories</Text>
-                            <Text>Watch All</Text>
+                            <Text style={{fontWeight: 'bold'}}>Stories</Text>
+                            <View style={{flexDirection: 'row', alignItems: 'center'}}>
+                                <Icon name='md-play' style={{fontSize: 14}}/>
+                                <Text style={{fontWeight: 'bold'}}> Watch All</Text>
+                            </View>
+
                         </View>
                         <View style={{flex: 3}}>
                             <ScrollView
