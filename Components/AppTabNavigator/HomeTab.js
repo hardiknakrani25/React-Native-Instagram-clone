@@ -19,7 +19,13 @@ export default class HomeTab extends Component {
         return (
             <Container style={styles.container}>
                 <Content>
-                    <CardComponent/>
+
+                    <CardComponent imageSource="1" likes="100"/>
+
+                    <CardComponent imageSource="2" likes="200"/>
+
+
+                    <CardComponent imageSource="3" likes="300"/>
                 </Content>
             </Container>
         )
