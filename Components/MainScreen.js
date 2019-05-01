@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import { SafeAreaView, Text, StyleSheet } from "react-native";
-import {createBottomTabNavigator, createAppContainer} from 'react-navigation'
+import {SafeAreaView, Text, StyleSheet, Platform} from "react-native";
+import {createBottomTabNavigator, createAppContainer,} from 'react-navigation'
 import {Icon} from "native-base";
 
 import HomeTab from './AppTabNavigator/HomeTab';
@@ -13,9 +13,9 @@ import ProfileTab from './AppTabNavigator/ProfileTab';
 
 class MainScreen extends Component {
     static navigationOptions = {
-        headerLeft: <Icon name="camera" style={{paddingLeft: 10}}/>,
+        headerLeft: <Icon name="camera" style={{paddingLeft: 15}}/>,
         title: "Instagram",
-        headerRight: <Icon name="send" style={{paddingRight: 10}}/>
+        headerRight: <Icon name="send" style={{paddingRight: 15}}/>
     };
 
   render() {
@@ -35,6 +35,24 @@ const TabsNavigator = createBottomTabNavigator({
     AddMediaTab,
     LikesTab,
     ProfileTab
+}, {
+    animationEnabled: true,
+    swipeEnabled: true,
+    tabBarPosition: 'bottom',
+    tabBarOptions: {
+        style: {
+            ...Platform.select({
+                android: {
+                    backgroundColor: 'white'
+                }
+            })
+        },
+
+        activeTintColor: '#000',
+        inactiveTintColor: '#d1cece',
+        showLabel: false,
+        showIcon: true
+    }
 })
 
 const AppTabNavigator = createAppContainer(TabsNavigator);
