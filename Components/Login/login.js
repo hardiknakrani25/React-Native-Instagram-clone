@@ -67,7 +67,11 @@ export default class Login extends Component {
               <Text style={{ color: "white" }}>Don't Have an account? </Text>
             </View>
             <View style={{ marginLeft: 3 }}>
-              <TouchableOpacity onPress={() => {}}>
+              <TouchableOpacity
+                onPress={() => {
+                  this.props.navigation.navigate("SignUp");
+                }}
+              >
                 <Text
                   style={{ color: "white", fontSize: 16, fontWeight: "bold" }}
                 >

@@ -1,7 +1,13 @@
 import React, { Component } from "react";
 import { Platform, StyleSheet, Text, View } from "react-native";
-import { createStackNavigator, createAppContainer } from "react-navigation";
+import {
+  createSwitchNavigator,
+  createStackNavigator,
+  createAppContainer
+} from "react-navigation";
 import MainScreen from "./Components/MainScreen";
+import Login from "./Components/Login/login";
+import SignUp from "./Components/Login/Signup";
 const instructions = Platform.select({
   ios: "Press Cmd+R to reload,\n" + "Cmd+D or shake for dev menu",
   android:
@@ -15,11 +21,25 @@ export default class App extends Component {
   }
 }
 
-const AppNavigator = createStackNavigator({
+const AuthStack = createStackNavigator(
+  {
+    Login,
+    SignUp
+  },
+  {
+    headerMode: "none"
+  }
+);
+const AppStack = createStackNavigator({
   Main: MainScreen
 });
 
-const AppContainer = createAppContainer(AppNavigator);
+const root = createSwitchNavigator({
+  //Splash,
+  AuthStack,
+  AppStack
+});
+const AppContainer = createAppContainer(root);
 
 const styles = StyleSheet.create({
   container: {
