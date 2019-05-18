@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { SafeAreaView, StyleSheet, Image } from "react-native";
+import { SafeAreaView, StyleSheet, Image, ImageBackground } from "react-native";
 import {
   Container,
   Content,
@@ -13,22 +13,36 @@ import {
 export default class Login extends Component {
   render() {
     return (
-      <SafeAreaView style={styles.Container}>
-        <Container>
-          <Content>
-            <Image
-              source={require("../../assets/instagram.png")}
-              style={styles.image}
+      <Container style={styles.Container}>
+        <ImageBackground
+          style={{
+            height: "100%",
+            width: "100%",
+            resizeMode: "cover"
+          }}
+          source={require("../../assets/bg.jpg")}
+        >
+          <Image
+            source={require("../../assets/instaLogoWhiteHD.png")}
+            style={styles.image}
+          />
+          <InputGroup style={styles.input} rounded>
+            <Input
+              style={{ color: "white" }}
+              placeholder="Email"
+              placeholderTextColor="white"
             />
-            <InputGroup style={styles.input} rounded>
-              <Input placeholder="Email" />
-            </InputGroup>
-            <InputGroup style={styles.input} rounded>
-              <Input secureTextEntry placeholder="password" />
-            </InputGroup>
-          </Content>
-        </Container>
-      </SafeAreaView>
+          </InputGroup>
+          <InputGroup style={styles.input} rounded>
+            <Input
+              style={{ color: "white" }}
+              placeholderTextColor="white"
+              secureTextEntry
+              placeholder="password"
+            />
+          </InputGroup>
+        </ImageBackground>
+      </Container>
     );
   }
 }
@@ -52,7 +66,7 @@ const styles = StyleSheet.create({
     alignSelf: "center"
   },
   image: {
-    marginTop: 20,
+    marginTop: 70,
     alignSelf: "center",
     width: 200,
     height: 60
