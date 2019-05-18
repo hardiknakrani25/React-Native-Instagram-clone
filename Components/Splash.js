@@ -8,6 +8,13 @@ import {
 } from "react-native";
 
 export default class Splash extends Component {
+  constructor(props) {
+    super();
+    setTimeout(() => {
+      this.props.navigation.navigate("AuthStack");
+    }, 5000);
+  }
+
   render() {
     return (
       <ImageBackground
