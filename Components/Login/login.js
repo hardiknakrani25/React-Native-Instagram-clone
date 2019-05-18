@@ -50,7 +50,7 @@ export default class Login extends Component {
             />
           </InputGroup>
 
-          <Button style={{ marginTop: 15, alignSelf: "center" }} bordered light>
+          <Button style={{ marginTop: 20, alignSelf: "center" }} bordered light>
             <Text> Log In </Text>
           </Button>
 
@@ -103,7 +103,8 @@ const styles = StyleSheet.create({
     alignSelf: "center"
   },
   image: {
-    marginTop: 70,
+    marginTop: 170,
+    marginBottom: 20,
     alignSelf: "center",
     width: 200,
     height: 60
