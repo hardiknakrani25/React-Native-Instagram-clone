@@ -41,6 +41,23 @@ export default class Login extends Component {
               placeholderTextColor="white"
             />
           </InputGroup>
+
+          <InputGroup style={styles.input} bordered>
+            <Input
+              style={{ color: "white" }}
+              placeholder="Full Name"
+              placeholderTextColor="white"
+            />
+          </InputGroup>
+
+          <InputGroup style={styles.input} bordered>
+            <Input
+              style={{ color: "white" }}
+              placeholder="User Name"
+              placeholderTextColor="white"
+            />
+          </InputGroup>
+
           <InputGroup style={styles.input} bordered>
             <Input
               style={{ color: "white" }}
@@ -51,7 +68,7 @@ export default class Login extends Component {
           </InputGroup>
 
           <Button style={{ marginTop: 20, alignSelf: "center" }} bordered light>
-            <Text> Log In </Text>
+            <Text> Sign Up </Text>
           </Button>
 
           <View
@@ -64,14 +81,14 @@ export default class Login extends Component {
             }}
           >
             <View>
-              <Text style={{ color: "white" }}>Don't Have an account? </Text>
+              <Text style={{ color: "white" }}>Already Have an account? </Text>
             </View>
             <View style={{ marginLeft: 3 }}>
               <TouchableOpacity onPress={() => {}}>
                 <Text
                   style={{ color: "white", fontSize: 16, fontWeight: "bold" }}
                 >
-                  Sign Up
+                  Log In
                 </Text>
               </TouchableOpacity>
             </View>
@@ -103,7 +120,7 @@ const styles = StyleSheet.create({
     alignSelf: "center"
   },
   image: {
-    marginTop: 170,
+    marginTop: 130,
     marginBottom: 20,
     alignSelf: "center",
     width: 200,
