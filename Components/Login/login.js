@@ -1,5 +1,11 @@
 import React, { Component } from "react";
-import { SafeAreaView, StyleSheet, Image, ImageBackground } from "react-native";
+import {
+  SafeAreaView,
+  StyleSheet,
+  Image,
+  ImageBackground,
+  TouchableOpacity
+} from "react-native";
 import {
   Container,
   Content,
@@ -47,6 +53,29 @@ export default class Login extends Component {
           <Button style={{ marginTop: 15, alignSelf: "center" }} bordered light>
             <Text> Log In </Text>
           </Button>
+
+          <View
+            style={{
+              flexDirection: "row",
+              alignSelf: "center",
+              marginTop: 30
+              //   position: "absolute",
+              //   bottom: 70
+            }}
+          >
+            <View>
+              <Text style={{ color: "white" }}>Don't Have account? </Text>
+            </View>
+            <View style={{ marginLeft: 3 }}>
+              <TouchableOpacity onPress={() => {}}>
+                <Text
+                  style={{ color: "white", fontSize: 16, fontWeight: "bold" }}
+                >
+                  Sign Up
+                </Text>
+              </TouchableOpacity>
+            </View>
+          </View>
         </ImageBackground>
       </Container>
     );
@@ -55,7 +84,9 @@ export default class Login extends Component {
 const styles = StyleSheet.create({
   Container: {
     flex: 1,
-    backgroundColor: "white"
+    backgroundColor: "white",
+    alignItems: "center",
+    justifyContent: "center"
   },
   text: {
     marginTop: 22,
