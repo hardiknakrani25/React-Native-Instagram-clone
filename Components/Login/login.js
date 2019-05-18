@@ -7,7 +7,9 @@ import {
   Input,
   Item,
   InputGroup,
-  Icon
+  Icon,
+  Button,
+  View
 } from "native-base";
 
 export default class Login extends Component {
@@ -26,14 +28,14 @@ export default class Login extends Component {
             source={require("../../assets/instaLogoWhiteHD.png")}
             style={styles.image}
           />
-          <InputGroup style={styles.input} rounded>
+          <InputGroup style={styles.input} bordered>
             <Input
               style={{ color: "white" }}
               placeholder="Email"
               placeholderTextColor="white"
             />
           </InputGroup>
-          <InputGroup style={styles.input} rounded>
+          <InputGroup style={styles.input} bordered>
             <Input
               style={{ color: "white" }}
               placeholderTextColor="white"
@@ -41,6 +43,10 @@ export default class Login extends Component {
               placeholder="password"
             />
           </InputGroup>
+
+          <Button style={{ marginTop: 15, alignSelf: "center" }} bordered light>
+            <Text> Log In </Text>
+          </Button>
         </ImageBackground>
       </Container>
     );
