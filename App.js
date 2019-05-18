@@ -8,6 +8,8 @@ import {
 import MainScreen from "./Components/MainScreen";
 import Login from "./Components/Login/login";
 import SignUp from "./Components/Login/Signup";
+import Splash from "./Components/Splash";
+
 const instructions = Platform.select({
   ios: "Press Cmd+R to reload,\n" + "Cmd+D or shake for dev menu",
   android:
@@ -35,7 +37,7 @@ const AppStack = createStackNavigator({
 });
 
 const root = createSwitchNavigator({
-  //Splash,
+  Splash,
   AuthStack,
   AppStack
 });
