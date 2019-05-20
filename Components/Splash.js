@@ -1,5 +1,7 @@
 import React, { Component } from "react";
+
 import {
+  AsyncStorage,
   Image,
   View,
   Text,
@@ -10,10 +12,32 @@ import {
 export default class Splash extends Component {
   constructor(props) {
     super();
+    // this._storeData();
+
     setTimeout(() => {
+      // this._retrieveData();
       this.props.navigation.navigate("AuthStack");
-    }, 5000);
+    }, 1000);
   }
+
+  _storeData = async () => {
+    try {
+      await AsyncStorage.setItem("token", "abc");
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  _retrieveData = async () => {
+    try {
+      const value = await AsyncStorage.getItem("token");
+      if (value != null) {
+        console.warn(value);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   render() {
     return (

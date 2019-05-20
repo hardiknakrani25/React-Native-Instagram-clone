@@ -19,6 +19,45 @@ import {
 } from "native-base";
 
 export default class Login extends Component {
+  constructor(props) {
+    super();
+    this.state = {
+      email: "",
+      fullname: "",
+      username: "",
+      password: ""
+    };
+  }
+
+  signUp() {
+    object = {
+      email: this.state.email.toLowerCase(),
+      fullname: this.state.fullname,
+      username: this.state.username,
+      password: this.state.password
+    };
+
+    this.onFetchSignUpRecords(object);
+  }
+
+  async onFetchSignUpRecords(object) {
+    try {
+      let response = await fetch("http://localhost:3000/register", {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(object)
+      });
+      if (response.status >= 200 && response.status < 300) {
+        this.props.navigation.goBack();
+      }
+    } catch (errors) {
+      alert(errors);
+    }
+  }
+
   render() {
     return (
       <Container style={styles.Container}>
@@ -36,6 +75,8 @@ export default class Login extends Component {
           />
           <InputGroup style={styles.input} bordered>
             <Input
+              onChangeText={email => this.setState({ email })}
+              value={this.state.email}
               style={{ color: "white" }}
               placeholder="Email"
               placeholderTextColor="white"
@@ -44,6 +85,8 @@ export default class Login extends Component {
 
           <InputGroup style={styles.input} bordered>
             <Input
+              value={this.state.fullname}
+              onChangeText={fullname => this.setState({ fullname })}
               style={{ color: "white" }}
               placeholder="Full Name"
               placeholderTextColor="white"
@@ -52,6 +95,8 @@ export default class Login extends Component {
 
           <InputGroup style={styles.input} bordered>
             <Input
+              value={this.state.username}
+              onChangeText={username => this.setState({ username })}
               style={{ color: "white" }}
               placeholder="User Name"
               placeholderTextColor="white"
@@ -60,6 +105,8 @@ export default class Login extends Component {
 
           <InputGroup style={styles.input} bordered>
             <Input
+              value={this.state.password}
+              onChangeText={password => this.setState({ password })}
               style={{ color: "white" }}
               placeholderTextColor="white"
               secureTextEntry
@@ -67,7 +114,12 @@ export default class Login extends Component {
             />
           </InputGroup>
 
-          <Button style={{ marginTop: 20, alignSelf: "center" }} bordered light>
+          <Button
+            onPress={() => this.signUp()}
+            style={{ marginTop: 20, alignSelf: "center" }}
+            bordered
+            light
+          >
             <Text> Sign Up </Text>
           </Button>
 
