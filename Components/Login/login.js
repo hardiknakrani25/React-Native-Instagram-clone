@@ -19,6 +19,42 @@ import {
 } from "native-base";
 
 export default class Login extends Component {
+  constructor(props) {
+    super();
+    this.state = {
+      email: "",
+      password: ""
+    };
+  }
+
+  async logIn() {
+    object = {
+      email: this.state.email,
+      password: this.state.password
+    };
+    if (
+      /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(this.state.email)
+    ) {
+      try {
+        let response = await fetch("http://localhost:3000/login", {
+          method: "POST",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(object)
+        });
+
+        let responseJson = await response.json();
+        console.warn(responseJson);
+      } catch (error) {
+        console.warn(error);
+      }
+    } else {
+      alert("Enter valid email");
+    }
+  }
+
   render() {
     return (
       <Container style={styles.Container}>
@@ -36,6 +72,8 @@ export default class Login extends Component {
           />
           <InputGroup style={styles.input} bordered>
             <Input
+              value={this.state.email}
+              onChangeText={email => this.setState({ email })}
               style={{ color: "white" }}
               placeholder="Email"
               placeholderTextColor="white"
@@ -43,6 +81,8 @@ export default class Login extends Component {
           </InputGroup>
           <InputGroup style={styles.input} bordered>
             <Input
+              onChangeText={password => this.setState({ password })}
+              value={this.state.password}
               style={{ color: "white" }}
               placeholderTextColor="white"
               secureTextEntry
@@ -50,7 +90,12 @@ export default class Login extends Component {
             />
           </InputGroup>
 
-          <Button style={{ marginTop: 20, alignSelf: "center" }} bordered light>
+          <Button
+            onPress={() => this.logIn()}
+            style={{ marginTop: 20, alignSelf: "center" }}
+            bordered
+            light
+          >
             <Text> Log In </Text>
           </Button>
 
