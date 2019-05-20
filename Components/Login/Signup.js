@@ -37,7 +37,24 @@ export default class Login extends Component {
       password: this.state.password
     };
 
-    this.onFetchSignUpRecords(object);
+    if (
+      /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(this.state.email)
+    ) {
+      if (
+        /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{7,15}$/.test(
+          this.state.password
+        )
+      ) {
+        this.onFetchSignUpRecords(object);
+      } else {
+        alert(
+          "Password must be 7 to 15 characters which contain at least one numeric digit and a special character"
+        );
+      }
+    } else {
+      alert("You have entered an invalid email address!");
+      return false;
+    }
   }
 
   async onFetchSignUpRecords(object) {
