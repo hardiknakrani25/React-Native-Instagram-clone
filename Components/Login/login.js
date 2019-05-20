@@ -46,7 +46,12 @@ export default class Login extends Component {
         });
 
         let responseJson = await response.json();
-        console.warn(responseJson);
+        if (responseJson.msg == "ok") {
+          alert(responseJson.token);
+          this.props.navigation.navigate("appStack");
+        } else {
+          alert(responseJson.msg);
+        }
       } catch (error) {
         console.warn(error);
       }
