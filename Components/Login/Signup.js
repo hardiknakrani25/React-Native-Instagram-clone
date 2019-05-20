@@ -67,8 +67,11 @@ export default class Login extends Component {
         },
         body: JSON.stringify(object)
       });
+
       if (response.status >= 200 && response.status < 300) {
         this.props.navigation.goBack();
+      } else if (response.status == 401) {
+        alert("Email already exist");
       }
     } catch (errors) {
       alert(errors);
