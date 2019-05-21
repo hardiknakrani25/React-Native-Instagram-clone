@@ -18,6 +18,7 @@ import {
   Content,
   Button
 } from "native-base";
+import CardComponent from "../CardComponent";
 import EntypoIcon from "react-native-vector-icons/Entypo";
 
 import AntDesign from "react-native-vector-icons/AntDesign";
