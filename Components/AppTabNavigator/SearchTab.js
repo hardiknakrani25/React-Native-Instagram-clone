@@ -1,5 +1,13 @@
 import React, { Component } from "react";
-import { SafeAreaView, StyleSheet, View, Text, ScrollView } from "react-native";
+import {
+  SafeAreaView,
+  StyleSheet,
+  View,
+  Text,
+  Image,
+  ScrollView,
+  Dimensions
+} from "react-native";
 import { SearchBar } from "react-native-elements";
 import {
   Header,
@@ -23,6 +31,59 @@ export default class SearchTab extends Component {
       <Icon name="ios-search" style={{ color: tintColor }} />
     )
   };
+
+  images = [
+    require("../../assets/feed/1.jpg"),
+    require("../../assets/feed/2.jpg"),
+    require("../../assets/feed/3.png"),
+    require("../../assets/feed/4.jpg"),
+    require("../../assets/feed/5.jpg"),
+    require("../../assets/feed/6.jpg"),
+    require("../../assets/feed/7.jpg"),
+    require("../../assets/feed/8.png"),
+    require("../../assets/feed/9.jpg"),
+    require("../../assets/feed/10.jpg"),
+    require("../../assets/feed/11.jpg"),
+    require("../../assets/feed/12.jpg"),
+    require("../../assets/feed/1.jpg"),
+    require("../../assets/feed/2.jpg"),
+    require("../../assets/feed/3.png"),
+    require("../../assets/feed/4.jpg"),
+    require("../../assets/feed/5.jpg"),
+    require("../../assets/feed/6.jpg"),
+    require("../../assets/feed/7.jpg"),
+    require("../../assets/feed/8.png"),
+    require("../../assets/feed/9.jpg"),
+    require("../../assets/feed/10.jpg"),
+    require("../../assets/feed/11.jpg"),
+    require("../../assets/feed/12.jpg")
+  ];
+
+  height = Dimensions.get("window").height;
+  width = Dimensions.get("window").width;
+
+  renderSectionOne() {
+    return this.images.map((image, index) => {
+      return (
+        <View
+          key={index}
+          style={[
+            {
+              width: this.width / 3,
+              height: this.height / 6
+            },
+            { marginBottom: 2 },
+            index % 3 !== 0 ? { paddingLeft: 2 } : { paddingLeft: 0 }
+          ]}
+        >
+          <Image
+            style={{ flex: 1, width: undefined, height: undefined }}
+            source={image}
+          />
+        </View>
+      );
+    });
+  }
 
   updateSearch = search => {
     this.setState({ search });
@@ -128,6 +189,11 @@ export default class SearchTab extends Component {
             />
           </ScrollView>
         </View>
+        <ScrollView style={{ marginTop: 10 }}>
+          <View style={{ flexDirection: "row", flexWrap: "wrap" }}>
+            {this.renderSectionOne()}
+          </View>
+        </ScrollView>
       </SafeAreaView>
     );
   }
