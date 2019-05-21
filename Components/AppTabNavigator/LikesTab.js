@@ -211,14 +211,15 @@ export default class LikesTab extends Component {
             selectedButtonStyle={{ backgroundColor: "black" }}
             containerStyle={{ height: 30 }}
           />
+          <View>
+            <FlatList
+              keyExtractor={this.keyExtractor}
+              data={list}
+              renderItem={this.renderItem}
+            />
+          </View>
         </View>
-        <View>
-          <FlatList
-            keyExtractor={this.keyExtractor}
-            data={list}
-            renderItem={this.renderItem}
-          />
-        </View>
+
         <Content />
       </Container>
     );
@@ -227,8 +228,7 @@ export default class LikesTab extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: "white"
+    flex: 1
   },
   androidHeader: {
     ...Platform.select({
