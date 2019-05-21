@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import {
+  AsyncStorage,
   SafeAreaView,
   StyleSheet,
   Image,
@@ -47,8 +48,15 @@ export default class Login extends Component {
 
         let responseJson = await response.json();
         if (responseJson.msg == "ok") {
-          alert(responseJson.token);
-          this.props.navigation.navigate("appStack");
+          console.log("token : ", responseJson.token);
+          (async () => {
+            try {
+              await AsyncStorage.setItem("@token", responseJson.token);
+              this.props.navigation.navigate("AppStack");
+            } catch (error) {
+              console.warn(error);
+            }
+          })();
         } else {
           alert(responseJson.msg);
         }

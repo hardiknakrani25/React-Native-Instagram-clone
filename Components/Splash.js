@@ -14,30 +14,76 @@ export default class Splash extends Component {
     super();
     // this._storeData();
 
-    setTimeout(() => {
-      // this._retrieveData();
-      this.props.navigation.navigate("AuthStack");
-    }, 1000);
+    // setTimeout(() => {
+    //   // this._retrieveData();
+    //   this.props.navigation.navigate("AuthStack");
+    // }, 1000);
+
+    this.authentication();
   }
 
-  _storeData = async () => {
+  //functions
+  async authentication() {
     try {
-      await AsyncStorage.setItem("token", "abc");
-    } catch (error) {
-      console.log(error);
-    }
-  };
+      const value = await AsyncStorage.getItem("@token");
 
-  _retrieveData = async () => {
-    try {
-      const value = await AsyncStorage.getItem("token");
-      if (value != null) {
-        console.warn(value);
+      console.log("value", value);
+
+      if (value !== null) {
+        var url = "http://localhost:3000/protected";
+        var bearer = "Bearer " + value;
+        fetch(url, {
+          method: "GET",
+          withCredentials: true,
+          credentials: "include",
+          headers: {
+            Authorization: bearer,
+            "X-FP-API-KEY": "iphone",
+            "Content-Type": "application/json"
+          }
+        })
+          .then(responseJson => {
+            if (responseJson.status == 200) {
+              this.props.navigation.navigate("AppStack");
+            } else {
+              this.props.navigation.navigate("AuthStack");
+            }
+          })
+          .catch(
+            error => console.warn(error)
+
+            //    this.setState({
+            //     isLoading: false,
+            //     message: 'Something bad happened ' + error
+            // })
+          );
+      } else {
+        this.props.navigation.navigate("AuthStack");
       }
     } catch (error) {
-      console.log(error);
+      // Error retrieving data
+      console.warn(error);
     }
-  };
+  }
+
+  // _storeData = async () => {
+  //   try {
+  //     await AsyncStorage.setItem("token", "abc");
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
+
+  // _retrieveData = async () => {
+  //   try {
+  //     const value = await AsyncStorage.getItem("token");
+  //     if (value != null) {
+  //       console.warn(value);
+  //     }
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
 
   render() {
     return (
