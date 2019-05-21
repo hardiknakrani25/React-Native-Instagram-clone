@@ -11,7 +11,20 @@ import {
   Body
 } from "native-base";
 
+import { ButtonGroup } from "react-native-elements";
 export default class LikesTab extends Component {
+  constructor(props) {
+    super();
+    this.state = {
+      selectedIndex: 1
+    };
+    this.updateIndex = this.updateIndex.bind(this);
+  }
+
+  updateIndex(selectedIndex) {
+    this.setState({ selectedIndex });
+  }
+
   static navigationOptions = {
     tabBarIcon: ({ tintColor }) => (
       <Icon name="ios-heart" style={{ color: tintColor }} />
@@ -19,6 +32,8 @@ export default class LikesTab extends Component {
   };
 
   render() {
+    const buttons = ["Following", "You"];
+    const { selectedIndex } = this.state;
     return (
       <Container style={styles.container}>
         <Header style={[styles.androidHeader]}>
@@ -28,6 +43,16 @@ export default class LikesTab extends Component {
           </Body>
           <Right />
         </Header>
+        <View>
+          <ButtonGroup
+            onPress={this.updateIndex}
+            selectedIndex={selectedIndex}
+            // buttonStyle={{ borderRadius: 10 }}
+            buttons={buttons}
+            selectedButtonStyle={{ backgroundColor: "black" }}
+            containerStyle={{ height: 30 }}
+          />
+        </View>
         <Content />
       </Container>
     );
