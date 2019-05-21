@@ -36,7 +36,7 @@ export default class SearchTab extends Component {
   render() {
     return (
       <SafeAreaView style={styles.container}>
-        <View style={{ marginRight: 15, marginLeft: 15 }}>
+        <View>
           <SearchBar
             lightTheme
             round
