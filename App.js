@@ -3,12 +3,20 @@ import { Platform, StyleSheet, Text, View } from "react-native";
 import {
   createSwitchNavigator,
   createStackNavigator,
-  createAppContainer
+  createAppContainer,
+  createBottomTabNavigator
 } from "react-navigation";
+
 import MainScreen from "./Components/MainScreen";
 import Login from "./Components/Login/login";
 import SignUp from "./Components/Login/Signup";
 import Splash from "./Components/Splash";
+
+import HomeTab from "./Components/AppTabNavigator/HomeTab";
+import AddMediaTab from "./Components/AppTabNavigator/AddMediaTab";
+import SearchTab from "./Components/AppTabNavigator/SearchTab";
+import LikesTab from "./Components/AppTabNavigator/LikesTab";
+import ProfileTab from "./Components/AppTabNavigator/ProfileTab";
 
 const instructions = Platform.select({
   ios: "Press Cmd+R to reload,\n" + "Cmd+D or shake for dev menu",
@@ -32,9 +40,40 @@ const AuthStack = createStackNavigator(
     headerMode: "none"
   }
 );
-const AppStack = createStackNavigator({
-  Main: MainScreen
-});
+// const AppStack = createStackNavigator({
+//   Main: MainScreen
+// });
+
+//TabsNavigator
+
+const AppStack = createBottomTabNavigator(
+  {
+    HomeTab,
+    SearchTab,
+    AddMediaTab,
+    LikesTab,
+    ProfileTab
+  },
+  {
+    animationEnabled: true,
+    swipeEnabled: true,
+    tabBarPosition: "bottom",
+    tabBarOptions: {
+      style: {
+        ...Platform.select({
+          android: {
+            backgroundColor: "white"
+          }
+        })
+      },
+
+      activeTintColor: "#000",
+      inactiveTintColor: "#d1cece",
+      showLabel: false,
+      showIcon: true
+    }
+  }
+);
 
 const root = createSwitchNavigator({
   Splash,

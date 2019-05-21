@@ -59,13 +59,9 @@ export default class ProfileTab extends Component {
       try {
         let res = await AsyncStorage.removeItem("@token");
         if (res == null) {
-          console.warn(res);
-          this.props.navigation.navigate("HomeTab");
-          this.props.navigation.goBack(null);
+          this.props.navigation.navigate("Splash");
         }
-      } catch (error) {
-        console.warn(error);
-      }
+      } catch (error) {}
     })();
   }
 
