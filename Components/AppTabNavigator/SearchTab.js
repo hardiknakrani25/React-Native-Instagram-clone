@@ -14,7 +14,8 @@ import {
 
 export default class SearchTab extends Component {
   state = {
-    search: ""
+    search: "",
+    showLoading: false
   };
 
   static navigationOptions = {
@@ -25,6 +26,11 @@ export default class SearchTab extends Component {
 
   updateSearch = search => {
     this.setState({ search });
+    if (search.length <= 0) {
+      this.setState({ showLoading: false });
+    } else {
+      this.setState({ showLoading: true });
+    }
   };
 
   render() {
@@ -40,7 +46,7 @@ export default class SearchTab extends Component {
               borderBottomWidth: 0
             }}
             inputContainerStyle={{ backgroundColor: "#E5E4EB" }}
-            showLoading
+            showLoading={this.state.showLoading}
             placeholder="Search"
             onChangeText={this.updateSearch}
             value={this.state.search}
