@@ -1,7 +1,16 @@
 import React, { Component } from "react";
-import { SafeAreaView, StyleSheet, View, Text } from "react-native";
-import { Icon } from "native-base";
+import { SafeAreaView, StyleSheet, View, Text, ScrollView } from "react-native";
 import { SearchBar } from "react-native-elements";
+import {
+  Header,
+  Icon,
+  Container,
+  Content,
+  Thumbnail,
+  Left,
+  Right,
+  Body
+} from "native-base";
 
 export default class SearchTab extends Component {
   state = {
@@ -36,6 +45,82 @@ export default class SearchTab extends Component {
             onChangeText={this.updateSearch}
             value={this.state.search}
           />
+        </View>
+        <View>
+          <ScrollView
+            horizontal={true}
+            showsHorizontalScrollIndicator={false}
+            contentContainerStyle={{
+              alignItems: "center",
+              paddingStart: 5,
+              paddingEnd: 5
+            }}
+          >
+            <Thumbnail
+              style={{
+                marginHorizontal: 5,
+                borderColor: "pink",
+                borderWidth: 2
+              }}
+              source={require("../../assets/storiesHeaderThumbnails/1.jpg")}
+            />
+            <Thumbnail
+              style={{
+                marginHorizontal: 5,
+                borderColor: "pink",
+                borderWidth: 2
+              }}
+              source={require("../../assets/storiesHeaderThumbnails/2.jpeg")}
+            />
+            <Thumbnail
+              style={{
+                marginHorizontal: 5,
+                borderColor: "pink",
+                borderWidth: 2
+              }}
+              source={require("../../assets/storiesHeaderThumbnails/3.jpeg")}
+            />
+            <Thumbnail
+              style={{
+                marginHorizontal: 5,
+                borderColor: "pink",
+                borderWidth: 2
+              }}
+              source={require("../../assets/storiesHeaderThumbnails/4.jpeg")}
+            />
+            <Thumbnail
+              style={{
+                marginHorizontal: 5,
+                borderColor: "pink",
+                borderWidth: 2
+              }}
+              source={require("../../assets/storiesHeaderThumbnails/5.jpeg")}
+            />
+            <Thumbnail
+              style={{
+                marginHorizontal: 5,
+                borderColor: "pink",
+                borderWidth: 2
+              }}
+              source={require("../../assets/storiesHeaderThumbnails/6.jpeg")}
+            />
+            <Thumbnail
+              style={{
+                marginHorizontal: 5,
+                borderColor: "pink",
+                borderWidth: 2
+              }}
+              source={require("../../assets/storiesHeaderThumbnails/7.jpeg")}
+            />
+            <Thumbnail
+              style={{
+                marginHorizontal: 5,
+                borderColor: "pink",
+                borderWidth: 2
+              }}
+              source={require("../../assets/storiesHeaderThumbnails/8.jpeg")}
+            />
+          </ScrollView>
         </View>
       </SafeAreaView>
     );
