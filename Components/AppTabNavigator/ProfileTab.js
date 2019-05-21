@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import {
+  AsyncStorage,
   View,
   Text,
   Image,
@@ -18,7 +19,8 @@ import {
   Button
 } from "native-base";
 import EntypoIcon from "react-native-vector-icons/Entypo";
-import CardComponent from "../CardComponent";
+
+import AntDesign from "react-native-vector-icons/AntDesign";
 
 export default class ProfileTab extends Component {
   images = [
@@ -50,6 +52,17 @@ export default class ProfileTab extends Component {
     this.state = {
       activeViewIndex: 0
     };
+  }
+
+  logout() {
+    (async () => {
+      try {
+        let res = await AsyncStorage.removeItem("@token");
+        if (res == null) {
+          this.props.navigation.navigate("Splash");
+        }
+      } catch (error) {}
+    })();
   }
 
   segmentClicked(index) {
@@ -111,9 +124,10 @@ export default class ProfileTab extends Component {
             <Text>USERNAME</Text>
           </Body>
           <Right>
-            <EntypoIcon
-              name={"back-in-time"}
-              style={{ paddingRight: 10, fontSize: 30 }}
+            <AntDesign
+              name={"logout"}
+              style={{ paddingRight: 10, fontSize: 25 }}
+              onPress={() => this.logout()}
             />
           </Right>
         </Header>
