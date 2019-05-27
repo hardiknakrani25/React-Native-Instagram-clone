@@ -122,7 +122,7 @@ export default class ProfileTab extends Component {
             <Icon name={"md-person-add"} style={{ padding: 10 }} />
           </Left>
           <Body style={[style.androidHeaderTitle]}>
-            <Text style={{ fontWeight: "bold", fontSize: 16 }}>USERNAME</Text>
+            <Text style={{ fontWeight: "bold", fontSize: 16 }}>Hardik</Text>
           </Body>
           <Right>
             <AntDesign
@@ -200,9 +200,9 @@ export default class ProfileTab extends Component {
               </View>
             </View>
             <View style={{ paddingHorizontal: 10, paddingVertical: 10 }}>
-              <Text style={{ fontWeight: "bold" }}>username</Text>
+              <Text style={{ fontWeight: "bold" }}>Hardik</Text>
               <Text>Bio...</Text>
-              <Text>www.google.com</Text>
+              <Text>www.instagram.com</Text>
             </View>
           </View>
           <View>

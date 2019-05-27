@@ -30,7 +30,7 @@ export default class Splash extends Component {
       console.log("value", value);
 
       if (value !== null) {
-        var url = "http://localhost:3000/protected";
+        var url = "https://5f3ea8e6.ngrok.io/protected";
         var bearer = "Bearer " + value;
         fetch(url, {
           method: "GET",

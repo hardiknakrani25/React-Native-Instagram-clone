@@ -37,7 +37,7 @@ export default class Login extends Component {
       /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(this.state.email)
     ) {
       try {
-        let response = await fetch("http://localhost:3000/login", {
+        let response = await fetch("https://5f3ea8e6.ngrok.io/login", {
           method: "POST",
           headers: {
             Accept: "application/json",

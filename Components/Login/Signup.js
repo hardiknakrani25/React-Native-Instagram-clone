@@ -59,7 +59,7 @@ export default class Login extends Component {
 
   async onFetchSignUpRecords(object) {
     try {
-      let response = await fetch("http://localhost:3000/register", {
+      let response = await fetch("https://5f3ea8e6.ngrok.ioregister", {
         method: "POST",
         headers: {
           Accept: "application/json",
